@@ -1,0 +1,58 @@
+{% extends 'homepage/main.html' %}
+{% block content %}
+
+    <div class="text-center">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="/{{ prev }}"><button type="button" class="btn btn-secondary"  aria-haspopup="true" aria-expanded="false" style="width:50%"> < </button></a>
+            </div>
+            <div class="col-md-6">
+                <a href="/{{ next }}"><button type="button" class="btn btn-secondary"  aria-haspopup="true" aria-expanded="false" style="width:50%"> > </button></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+        <tbody>
+            <tr>
+                {% for date in dates %}
+
+                    <td>
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <h4 style="text-align: center">{{ date.0 }}</h4>
+                                </tr>
+                                <tr>
+                                    <h6 style="text-align: center">{{ date.2 }}</h6>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for day in date.1 %}
+                                    <tr >
+                                        <td style="vertical-align: middle; text-align: center">{{ day.0 }}</td>
+                                        <td>
+                                            <table class="table table-bordered table-striped table-hover">
+                                                <tbody>
+                                                    <tr><td>{{ day.1 }}</td></tr>
+                                                    <tr><td>{{ day.2 }}</td></tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </td>
+
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+
+
+{% endblock %}
